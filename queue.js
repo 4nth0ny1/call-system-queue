@@ -1,49 +1,31 @@
-const allCallers = document.querySelector('.all-callers');
-const position = document.querySelector('.position');
-const enter = document.querySelector('.enter');
-const exit = document.querySelector('.exit');
-const callerName = document.querySelector('.name-input');
-const whoIsFirst = document.querySelector('.who-is-first');
+const button = document.querySelector('#push')
+let tasks = document.querySelector('#tasks');
+const newTask = document.querySelector('#newtask');
 
-function Queue () { 
-    collection = [];
-    this.print = function() {
-        console.log(collection);
-        allCallers.append(collection);
-    };
+const enqueue = (e) => {
+    if(document.querySelector('#newtask input').value.length == 0){
+        alert("Please Enter a Task")
+    }
 
-    this.enqueue = function(element) {
-        collection.push(element);
-    };
+    else{
+        tasks.innerHTML += `
+             <div class="task">
+                 <span id="taskname">
+                     ${document.querySelector('#newtask input').value}
+                 </span>
+                 <button class="delete">
+                     <i class="delete">delete</i>
+                 </button>
+             </div>
+        `;
 
-    this.dequeue = function() {
-        return collection.shift(); 
-    };
-
-    this.front = function() {
-        return collection[0];
-    };
-
-    this.size = function() {
-        return collection.length; 
-    };
-
-    this.isEmpty = function() {
-        return (collection.length === 0); 
-    };
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
 }
 
-var q = new Queue(); 
-q.enqueue('a'); 
-q.enqueue('b');
-q.enqueue('c');
-q.print();
-q.dequeue();
-console.log(q.front());
-q.print();
-
-
-const form = document.addEventListener('.input-container');
-form.addEventListener('click', (nameInput) => {
-    q.enqueue(nameInput);
-})
+button.addEventListener('click', enqueue);
