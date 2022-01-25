@@ -4,11 +4,13 @@ const callersWaiting = document.querySelector('#caller-collection');
 
 const showCurrentCallers = (array) => {
     for (let i = 0; i < array.length; i++) {
-        const caller = document.createElement('li');
+        const caller = document.createElement('div');
         caller.append(array[i]);
         callersWaiting.append(caller);
     };
 };
+
+showCurrentCallers(currentCollection);
 
 const acceptNewCaller = (e) => {
     helping = collection.shift();

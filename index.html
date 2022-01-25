@@ -11,21 +11,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Customer View Queue</h1>
-        <div id="newtask">
-            <input type="text" placeholder="Type your name">
-            <button id="push">Add</button>
+        <div class="customer-view">
+            <h1>Customer View Queue</h1>
+            <div id="newtask">
+                <input type="text" placeholder="Type your name">
+                <button id="push">Add</button>
+            </div>
         </div>
         <div id="callers"></div>
-    </div>
-    <div class="attendent">
-        <h1>Attendent View</h1>
-        <div id="caller-collection">
+
+    <hr>
+        <div id="caller-collection"></div>
+    <hr>
+        <div class="attendent">
+            <h1>Attendent View</h1>
+            <button class="accept-caller">accept
+            </button>
+            <div class="current-caller"></div>
+            <button class="release-caller">release</button>
         </div>
-        <button class="accept-caller">accept
-        </button>
-        <div class="current-caller"></div>
-        <button class="release-caller">release</button>
     </div>
 </body>
 </html>
