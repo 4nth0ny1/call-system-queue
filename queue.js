@@ -11,7 +11,7 @@ const enqueue = (e) => {
     }
 
     else{
-        collection.push(callers.length);
+        collection.push(document.querySelector('#newtask input').value);
         const newCallerContainer = document.createElement('div');
         const thanks = document.createElement('div');
         thanks.textContent = `Thank you, ${document.querySelector('#newtask input').value}.`
@@ -24,7 +24,7 @@ const enqueue = (e) => {
 
         averageTime = `Your wait time is ${collection.length * 5} minutes`;
         newCallerContainer.append(averageTime);
-        console.log(collection)
+        showCurrentCallers(collection)
     }
 }
 
