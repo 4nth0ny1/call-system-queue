@@ -1,6 +1,9 @@
 const button = document.querySelector('#push')
-let tasks = document.querySelector('#tasks');
+let callers = document.querySelector('#callers');
 const newTask = document.querySelector('#newtask');
+
+let collection = ['Anthony', 'John', 'Denny'];
+let averageTime = 1; 
 
 const enqueue = (e) => {
     if(document.querySelector('#newtask input').value.length == 0){
@@ -8,24 +11,25 @@ const enqueue = (e) => {
     }
 
     else{
-        tasks.innerHTML += `
-             <div class="task">
-                 <span id="taskname">
-                     ${document.querySelector('#newtask input').value}
-                 </span>
-                 <button class="delete">
-                     <i class="delete">delete</i>
-                 </button>
-             </div>
-        `;
+        collection.push(callers.length);
+        const newCallerContainer = document.createElement('div');
+        const thanks = document.createElement('div');
+        thanks.textContent = `Thank you, ${document.querySelector('#newtask input').value}.`
+        newCallerContainer.append(thanks);
+        callers.append(newCallerContainer);
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
+        const position = document.createElement('div');
+        position.textContent = `Your current position is ${collection.length}.`
+        newCallerContainer.append(position);
+
+        averageTime = `Your wait time is ${collection.length * 5} minutes`;
+        newCallerContainer.append(averageTime);
+
     }
 }
+
+
+
+
 
 button.addEventListener('click', enqueue);
