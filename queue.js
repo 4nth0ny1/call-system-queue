@@ -5,45 +5,45 @@ const exit = document.querySelector('.exit');
 const callerName = document.querySelector('.name-input');
 const whoIsFirst = document.querySelector('.who-is-first');
 
-function CallSystem () {
+function Queue () { 
     collection = [];
-    this.print = () => {
+    this.print = function() {
         console.log(collection);
-    }
+        allCallers.append(collection);
+    };
 
-    this.enqueue = (element) => {
-        console.log(element);
-        // const addNewCaller = collection.push(e.target.textContent);
-        const newCaller = collection.push(element);
-        allCallers.append(collection.push(newCaller));
-    }
+    this.enqueue = function(element) {
+        collection.push(element);
+    };
 
-    this.dequeue = () => {
-        console.log('you clicked the dequeue button');
-        // // we want to remove someone everytime the attendent is done with someone. we'll say that is every minute. 
-        return collection.shift();
-    } 
+    this.dequeue = function() {
+        return collection.shift(); 
+    };
 
-    this.size = () => {
-        return collection.length;
-        position.append(collection.length);
-    }
-
-    this.front = () => {
+    this.front = function() {
         return collection[0];
-        whoIsFirst.append(collection[0]);
+    };
 
-    }
+    this.size = function() {
+        return collection.length; 
+    };
+
+    this.isEmpty = function() {
+        return (collection.length === 0); 
+    };
 }
 
-const callsys = new CallSystem();
-callsys.enqueue('Anthony');
-callsys.enqueue('Susan');
-callsys.enqueue('Jim');
-callsys.enqueue('Debolina');
-callsys.enqueue('Kavya');
-// callsys.dequeue();
-console.log(callsys.print());
-console.log(callsys.size());
-console.log(callsys.front());
+var q = new Queue(); 
+q.enqueue('a'); 
+q.enqueue('b');
+q.enqueue('c');
+q.print();
+q.dequeue();
+console.log(q.front());
+q.print();
 
+
+const form = document.addEventListener('.input-container');
+form.addEventListener('click', (nameInput) => {
+    q.enqueue(nameInput);
+})
