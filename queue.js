@@ -24,7 +24,7 @@ const enqueue = (e) => {
 
         averageTime = `Your wait time is ${collection.length * 5} minutes`;
         newCallerContainer.append(averageTime);
-
+        console.log(collection)
     }
 }
 
