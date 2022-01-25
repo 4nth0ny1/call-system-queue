@@ -28,8 +28,4 @@ const enqueue = (e) => {
     }
 }
 
-
-
-
-
 button.addEventListener('click', enqueue);

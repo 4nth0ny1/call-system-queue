@@ -1,16 +1,14 @@
-
-console.log(collection);
-console.log(averageTime);
-
 let helping; 
-
-const callersWaiting = document.querySelector('#callers');
+const callersWaiting = document.querySelector('#caller-collection');
 
 const acceptNewCaller = (e) => {
     helping = collection.shift();
-    console.log(helping);
-    callersWaiting.append(collection)
     currentlyHelping();
+    updateCollection(collection);
+}
+
+const updateCollection = (collection) => {
+    callersWaiting.append(collection);
 }
 
 const currentlyHelping = () => {
@@ -20,4 +18,6 @@ const currentlyHelping = () => {
 
 const accept = document.querySelector('.accept-caller')
 accept.addEventListener('click', acceptNewCaller);
-console.log(collection);
+
+const refreshCollectionButton = document.querySelector('.caller-collection');
+refreshCollectionButton.addEventListener('click', (e) => updateCollection);
